@@ -1,0 +1,43 @@
+﻿@page "/"
+
+<Container>
+    <MRow>
+        <MCol></MCol>
+    </MRow>
+    <MRow>
+        <h1>Hello, world!</h1>
+
+        Welcome to your new app.
+
+        <SurveyPrompt Title="How is Blazor working for you?" />
+
+        <MBottomNavigation @bind-Value="value"
+                           Color="teal"
+                                  Fixed
+                           Style="display:flex"
+                                  Grow>
+            <MButton>
+                <span>Recents</span>
+
+                <MIcon>mdi-history</MIcon>
+            </MButton>
+
+            <MButton>
+                <span>Favorites</span>
+
+                <MIcon>mdi-heart</MIcon>
+            </MButton>
+
+            <MButton>
+                <span>Nearby</span>
+
+                <MIcon>mdi-map-marker</MIcon>
+            </MButton>
+        </MBottomNavigation>
+    </MRow>
+
+</Container>
+
+@code {
+    StringNumber value = 1;
+}

@@ -1,0 +1,81 @@
+﻿@inherits LayoutComponentBase
+
+<MApp>
+    <MAppBar App Dense Elevation="2" Color="deep-purple accent-4" Dark>
+        <MAppBarNavIcon @onclick="() => _drawer = !_drawer"></MAppBarNavIcon>
+        <MToolbarTitle>CrossPlatformApp</MToolbarTitle>
+        <MSpacer></MSpacer>
+
+        <MButton Icon>
+            <MIcon>mdi-heart</MIcon>
+        </MButton>
+
+        <MButton Icon>
+            <MIcon>mdi-magnify</MIcon>
+        </MButton>
+
+        <MMenu Left
+               Bottom>
+            <ActivatorContent>
+                <MButton Icon @attributes="@context.Attrs">
+                    <MIcon>mdi-dots-vertical</MIcon>
+                </MButton>
+            </ActivatorContent>
+            <ChildContent>
+                <MList>
+                    @for (var i = 0; i < 5; i++)
+                    {
+                        var n = i + 1;
+                        <MListItem @key="n"
+                               OnClick="() => {}">
+                            <MListItemTitle>Option @n</MListItemTitle>
+                        </MListItem>
+                    }
+                </MList>
+            </ChildContent>
+        </MMenu>
+    </MAppBar>
+
+    <MNavigationDrawer App @bind-Value="_drawer">
+        <MList Nav Routable>
+            <MListItem Href="/" ActiveClass="primary--text">
+                <MListItemIcon>
+                    <MIcon>mdi-home</MIcon>
+                </MListItemIcon>
+                <MListItemContent>
+                    <MListItemTitle>Home</MListItemTitle>
+                </MListItemContent>
+            </MListItem>
+            <MListItem Href="/counter" ActiveClass="primary--text">
+                <MListItemIcon>
+                    <MIcon>mdi-plus</MIcon>
+                </MListItemIcon>
+                <MListItemContent>
+                    <MListItemTitle>Counter</MListItemTitle>
+                </MListItemContent>
+            </MListItem>
+            <MListItem Href="/fetchdata" ActiveClass="primary--text">
+                <MListItemIcon>
+                    <MIcon>mdi-list-box</MIcon>
+                </MListItemIcon>
+                <MListItemContent>
+                    <MListItemTitle>Fetch data</MListItemTitle>
+                </MListItemContent>
+            </MListItem>
+        </MList>
+    </MNavigationDrawer>
+
+    <MMain>
+        <MContainer Fluid>
+            <MErrorHandler>
+                @Body
+            </MErrorHandler>
+        </MContainer>
+    </MMain>
+</MApp>
+
+            @code {
+
+    private bool _drawer;
+
+}
